@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VendorLink - Login Button</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #4F46E5;  /* Indigo */
+      --secondary-color: #10B981; /* Emerald */
+      --btn-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    /* LOGIN BUTTON */
+    .btn-login {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: var(--btn-shadow);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .btn-login:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+    }
+
+    .btn-login:active {
+      transform: scale(0.98);
+    }
+
+    .btn-login:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* HIDE LOADER INITIALLY */
+    .btn-login .loader {
+      display: none;
+      position: absolute;
+      right: 20px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* LOADER DOTS */
+    .btn-login .loader span {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      margin: 0 2px;
+      background-color: white;
+      border-radius: 50%;
+      animation: bounce 1.2s infinite ease-in-out both;
+    }
+
+    .btn-login .loader span:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+    .btn-login .loader span:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+    .btn-login .loader span:nth-child(3) {
+      animation-delay: 0;
+    }
+
+    @keyframes bounce {
+      0%, 80%, 100% {
+        transform: scale(0);
+      }
+      40% {
+        transform: scale(1);
+      }
+    }
+
+    /* Button text animation */
+    .btn-login .text {
+      transition: all 0.3s ease;
+    }
+
+    .btn-login.loading .text {
+      transform: translateX(-16px);
+    }
+
+    .btn-login.loading .loader {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn-login" id="loginButton">
+    <span class="text">Login to VendorLink</span>
+    <span class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+
+  <script>
+    const loginButton = document.getElementById('loginButton');
+    
+    loginButton.addEventListener('click', function() {
+      // Show loading state
+      this.classList.add('loading');
+      this.disabled = true;
+      
+      // Simulate login process
+      setTimeout(() => {
+        this.classList.remove('loading');
+        this.disabled = false;
+        alert('Login functionality will be implemented in the next version');
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
